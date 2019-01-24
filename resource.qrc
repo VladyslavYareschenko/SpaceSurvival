@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/asteroidsSet.png</file>
+        <file>img/enemyShip.png</file>
+        <file>img/EnemysShipExplosion.png</file>
+        <file>img/heart.png</file>
+        <file>img/playerShip.png</file>
+        <file>img/playFieldBackground.png</file>
+    </qresource>
+</RCC>
