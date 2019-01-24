@@ -14,7 +14,7 @@ static qreal normalizeAngle(qreal angle)
 }
 static QTimer * timer = new QTimer();
 
-Enemy::Enemy(Player * player, const QPixmap &enemyShipImage) : QObject(), QGraphicsItem(),
+Enemy::Enemy(Player * player, const QPixmap &enemyShipImage) :
     PlayerObject(player),
     shipImage(enemyShipImage)
 {
@@ -24,7 +24,7 @@ Enemy::Enemy(Player * player, const QPixmap &enemyShipImage) : QObject(), QGraph
     TimerIterationsCounter = 0;
     if(!timer->isActive())
         timer->start(15);
-    connect(timer,&QTimer::timeout,this,&Enemy::traectoryMoving);
+    connect(timer,&QTimer::timeout,this,&Enemy::move);
     connect(timer,&QTimer::timeout,this,&Enemy::shoot);
     connect(timer,&QTimer::timeout,this,&Enemy::collisionCheck);
 }
@@ -37,16 +37,6 @@ int Enemy::type() const
 int Enemy::ClassType()
 {
     return 70003;
-}
-
-int Enemy::health() const
-{
-    return Health;
-}
-
-void Enemy::GameOver()
-{
-    this->deleteLater();
 }
 
 QRectF Enemy::boundingRect() const
@@ -68,7 +58,7 @@ QPainterPath Enemy::shape() const
         return path;
 }
 
-void Enemy::traectoryMoving()
+void Enemy::move()
 {
     QLineF lineToTarget(QPointF(0, 0), mapFromItem(PlayerObject, 0, 0));
     qreal angleToTarget = ::acos(lineToTarget.dx() / lineToTarget.length());

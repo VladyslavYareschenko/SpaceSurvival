@@ -8,10 +8,11 @@
 #include <QGraphicsScene>
 #include "Windows.h"
 #include "bullet.h"
+#include "interactingitem.h"
 
 #define PLAYER_TYPE 70001
 
-class Player : public QObject, public QGraphicsItem
+class Player : public InteractingItem
 {
     Q_OBJECT
 public:
@@ -19,7 +20,6 @@ public:
     ~Player();
     int type() const;
     static int ClassType();
-    int health() const;
     int score() const;
     void setScore(int score);
 signals:
@@ -36,7 +36,6 @@ private:
     QPainterPath shape() const;
     void collisionCheck();
     int RotationAngle;
-    int Health;
     int Score;
     int TimerIterationCounter;
     QTimer * timer;

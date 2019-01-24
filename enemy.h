@@ -9,31 +9,29 @@
 #include "bullet.h"
 #include "random.h"
 #include "explosion.h"
+#include "interactingitem.h"
 
-class Enemy : public QObject, public QGraphicsItem
+class Enemy : public InteractingItem
 {
     Q_OBJECT
 public:
     explicit Enemy(Player * player, const QPixmap &enemyShipImage);
     int type() const;
     static int ClassType();
-    int health() const;
     bool setOnRandomPosition(QGraphicsScene * targetScene);
-    void hit();
-    void crash();
 signals:
     void dead();
 public slots:
-    void GameOver();
+    void hit();
+    void crash();
 private slots:
-    void traectoryMoving();
+    void move();
     void shoot();
 private:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget);
     QPainterPath shape() const;
     void collisionCheck();
-    int Health;
     int TimerIterationsCounter;
     double Rotation;
     Player *PlayerObject;

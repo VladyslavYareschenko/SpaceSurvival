@@ -32,7 +32,8 @@ SOURCES += \
     enemy.cpp \
     asteroid.cpp \
     explosion.cpp \
-    random.cpp
+    random.cpp \
+    interactingitem.cpp
 
 HEADERS += \
     player.h \
@@ -41,7 +42,8 @@ HEADERS += \
     enemy.h \
     asteroid.h \
     explosion.h \
-    random.h
+    random.h \
+    interactingitem.h
 
 FORMS += \
         mainwidget.ui

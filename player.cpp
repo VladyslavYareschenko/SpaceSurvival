@@ -1,7 +1,7 @@
 #include "player.h"
 #include "asteroid.h"
 
-Player::Player() : QObject(), QGraphicsItem ()
+Player::Player() : InteractingItem ()
 {
     RotationAngle = 0;
     Health = 5;
@@ -28,11 +28,6 @@ int Player::type() const
 int Player::ClassType()
 {
     return 70001;
-}
-
-int Player::health() const
-{
-    return Health;
 }
 
 int Player::score() const
